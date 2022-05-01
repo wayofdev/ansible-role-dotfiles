@@ -1,0 +1,9 @@
+---
+
+- include_tasks: install-chezmoi.yml
+  tags:
+    - chezmoi
+
+- include_tasks: configure.yml
+  tags:
+    - configure

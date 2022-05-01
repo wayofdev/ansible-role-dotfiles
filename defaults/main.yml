@@ -1,0 +1,12 @@
+---
+
+dotfiles:
+
+  repository:
+    url: ""
+
+    branch: "master"
+
+    accept_hostkey: false
+
+    local_dest: "~/Documents/dotfiles"
