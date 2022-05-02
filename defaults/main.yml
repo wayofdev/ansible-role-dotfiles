@@ -1,12 +1,6 @@
 ---
 
 dotfiles:
-
   repository:
-    url: ""
-
+    url: "https://github.com/lotyp/dotfiles.git"
     branch: "master"
-
-    accept_hostkey: false
-
-    local_dest: "~/Documents/dotfiles"

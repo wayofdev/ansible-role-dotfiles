@@ -1,0 +1,26 @@
+---
+
+- name: Chezmoi - Get latest available version available for download
+  block:
+    - name: Chezmoi - Find latest releases
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/twpayne/chezmoi/releases/latest
+        return_content: true
+        headers:
+          Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
+      register: chezmoi_release_output
+
+    - name: Chezmoi - Set latest available version for download
+      ansible.builtin.set_fact:
+        chezmoi_version: "{{ chezmoi_release_output.json.tag_name }}"
+
+- name: Chezmoi - filter variable for linux versions
+  ansible.builtin.set_fact:
+    chezmoi_version_filtered: "{{ chezmoi_version | regex_replace('^v', '') }}"
+
+- name: Chezmoi - Install for Linux (Debian Family)
+  ansible.builtin.apt:
+    deb: |-
+      {{ chezmoi_repository }}/releases/download/{{ chezmoi_version }}/chezmoi_{{ chezmoi_version_filtered }}_linux_
+      {{ chezmoi_debian_architectures[ansible_architecture] }}.deb
+  when: ansible_facts['os_family'] == "Debian"

@@ -15,7 +15,7 @@ lint:
 
 ### Run tests
 test:
-	ansible-playbook tests/test.yml --ask-become
+	ansible-playbook tests/test.yml
 .PHONY: test
 
 ### List all hostnames

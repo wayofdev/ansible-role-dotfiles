@@ -2,9 +2,9 @@
 
 - name: Chezmoi Config - Initialize chezmoi (empty repository)
   ansible.builtin.command: "chezmoi init"
-  when: not chezmoi_init_url
+  when: not dotfiles.repository.url
 
-- name: Chezmoi Config - Initialize chezmoi from
-  ansible.builtin.command: "chezmoi init --apply --verbose {{ chezmoi_init_url }}"
-  when: chezmoi_init_url
+- name: Chezmoi Config - Initialize chezmoi from {{ dotfiles.repository.url }}
+  ansible.builtin.command: "chezmoi init --apply --verbose --branch {{ dotfiles.repository.branch }} {{ dotfiles.repository.url }}"
+  when: dotfiles.repository.url
   changed_when: false

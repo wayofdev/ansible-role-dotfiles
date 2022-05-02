@@ -53,6 +53,7 @@ jobs:
       matrix:
         os:
           - macos-12
+          - ubuntu-latest
 
     steps:
       - name: Check out the codebase.
