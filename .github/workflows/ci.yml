@@ -72,6 +72,7 @@ jobs:
         run: ansible-playbook tests/test.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Idempotence check.
         run: |
@@ -83,6 +84,7 @@ jobs:
             || (echo 'Idempotence test: fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: '1'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     if: github.event.inputs.shouldPublishImage == 'yes' || github.ref == 'refs/heads/master'
