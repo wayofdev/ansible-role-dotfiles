@@ -1,4 +1,11 @@
 ---
 
 remote_regular_user: "{{ ansible_user_id }}"
+
 chezmoi_repository: "https://github.com/twpayne/chezmoi"
+
+chezmoi_debian_architectures:
+  x86_64: amd64
+  arm: arm
+  arm64: arm64
+  aarch64: arm64
