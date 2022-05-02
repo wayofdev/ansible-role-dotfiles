@@ -9,8 +9,8 @@ reqs ?= requirements.yml
 
 ### Lint yaml files
 lint:
-	ansible-lint tests/test.yml -c .ansible-lint
-	ansible-playbook tests/test.yml --syntax-check
+	cd tests && ansible-lint test.yml -c ../.ansible-lint
+	cd tests && ansible-playbook test.yml --syntax-check
 .PHONY: lint
 
 ### Run tests

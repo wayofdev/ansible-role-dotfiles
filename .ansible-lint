@@ -4,3 +4,4 @@
 
 skip_list:
   - 'experimental'
+  - 'line-length'
