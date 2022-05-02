@@ -33,7 +33,8 @@ jobs:
         run: |
           pip3 install yamllint
           pip3 install ansible-lint
-          cp tests/ansible.cfg tests/inventory.yml ./
+          cp ./tests/ansible.cfg .
+          cp ./tests/inventory.yml .
           ansible-galaxy install -r requirements.yml
 
       - name: Run yamllint.
@@ -66,7 +67,8 @@ jobs:
         run: |
           set -eux
           pip install ansible
-          cp tests/ansible.cfg tests/inventory.yml ./
+          cp ./tests/ansible.cfg .
+          cp ./tests/inventory.yml .
           ansible-galaxy install -r requirements.yml
 
       - name: Test the playbook.
