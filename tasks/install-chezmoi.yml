@@ -8,11 +8,15 @@
 
 - name: Chezmoi - Get latest available version available for download.
   block:
+
     - name: Chezmoi - Find latest releases.
       ansible.builtin.uri:
         url: https://api.github.com/repos/twpayne/chezmoi/releases/latest
         return_content: true
+        headers:
+          Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
       register: chezmoi_release_output
+
     - name: Chezmoi - Set latest available version for download.
       ansible.builtin.set_fact:
         chezmoi_version: "{{ chezmoi_release_output.json.tag_name }}"
