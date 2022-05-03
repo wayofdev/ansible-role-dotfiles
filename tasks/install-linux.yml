@@ -20,6 +20,6 @@
 
 - name: Chezmoi - Install for Linux (Debian Family)
   ansible.builtin.apt:
-    deb: "{{ chezmoi_repository }}/releases/download/{{ chezmoi_version }}/chezmoi_{{ chezmoi_version_filtered }}_linux_{{ chezmoi_debian_architectures[ansible_architecture] }}.deb"
+    deb: "{{ chezmoi_repository }}/releases/download/{{ chezmoi_version }}/chezmoi_{{ chezmoi_version_filtered }}_linux_{{ chezmoi_deb_arch[ansible_architecture] }}.deb"
   become: true
   when: ansible_facts['os_family'] == "Debian"
