@@ -1,6 +1,6 @@
 ---
 
-- name: Chezmoi - Install for macOS using brew
+- name: Chezmoi | Install for macOS using brew
   community.general.homebrew:
     name: chezmoi
     state: present

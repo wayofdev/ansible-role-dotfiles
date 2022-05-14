@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python 3.
         uses: actions/setup-python@v3
@@ -52,12 +52,13 @@ jobs:
     strategy:
       matrix:
         os:
+          - macos-11
           - macos-12
           - ubuntu-latest
 
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
           python-version: 3.9
@@ -73,6 +74,7 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: '1'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANSIBLE_STDOUT_CALLBACK: 'unixy'
 
       - name: Idempotence check.
         run: |
@@ -85,6 +87,7 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: '1'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANSIBLE_STDOUT_CALLBACK: 'unixy'
 
   publish:
     if: github.event.inputs.shouldPublishImage == 'yes' || github.ref == 'refs/heads/master'
@@ -93,7 +96,7 @@ jobs:
       - integration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: galaxy
         uses: robertdebock/galaxy-action@1.2.0

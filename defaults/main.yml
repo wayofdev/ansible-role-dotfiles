@@ -2,5 +2,8 @@
 
 dotfiles:
   repository:
-    url: "https://github.com/lotyp/dotfiles.git"
-    branch: "master"
+    # From where should we take dotfiles?
+    # Example repository: https://github.com/benmezger/dotfiles
+    # By default, my personal is used.
+    url: https://github.com/lotyp/dotfiles.git
+    branch: master

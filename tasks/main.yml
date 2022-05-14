@@ -1,25 +1,27 @@
 ---
 
-- name: Chezmoi - Check if app is already installed
-  ansible.builtin.command: chezmoi --version
-  register: chezmoi_version_output
-  ignore_errors: true
-  changed_when: false
-
-- name: Chezmoi - Should we install
-  ansible.builtin.set_fact:
-    chezmoi_install: "{{ chezmoi_version_output.rc > 0 }}"
-
-- name: Chezmoi - Debug task
-  ansible.builtin.debug:
-    msg: "Existing chezmoi binary in system: {{ chezmoi_install | ternary(false,true) }}"
-
-- include_tasks: install-mac.yml
-  when: chezmoi_install and ansible_system == "Darwin"
-
-- include_tasks: install-linux.yml
-  when: chezmoi_install and ansible_system == "Linux"
-
-- include_tasks: configure.yml
+- name: Chezmoi | Include | Pre-install tasks
+  ansible.builtin.include_tasks: install.yml
   tags:
-    - configure
+    - dotfiles-install
+    - dotfiles-install-mac
+    - dotfiles-install-linux
+
+- name: Chezmoi | Include | Mac specific install tasks
+  ansible.builtin.include_tasks: install-mac.yml
+  when: chezmoi_install and ansible_system == "Darwin"
+  tags:
+    - dotfiles-install
+    - dotfiles-install-mac
+
+- name: Chezmoi | Include | Linux specific install tasks
+  ansible.builtin.include_tasks: install-linux.yml
+  when: chezmoi_install and ansible_system == "Linux"
+  tags:
+    - dotfiles-install
+    - dotfiles-install-linux
+
+- name: Chezmoi | Include | Dotfiles and Chezmoi configuration tasks
+  ansible.builtin.include_tasks: configure.yml
+  tags:
+    - dotfiles-configure
