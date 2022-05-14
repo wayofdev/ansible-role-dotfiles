@@ -44,7 +44,7 @@ Role is used to automate installation and setup of [chezmoi](https://thekelleys.
 
 ### → Why Chezmoi for dotfiles?
 
-When I dediced to develop a role for my dotfiles I did some research over existing dotfile managers. Chezmoi has a great comparsion table over other dotfile managers. Please see this [comparsion table](https://www.chezmoi.io/comparison-table/)
+When I dediced to develop a role for my dotfiles I did some research over existing dotfile managers. Chezmoi has a great comparsion table over other managers. Check this [comparsion table](https://www.chezmoi.io/comparison-table/).
 
 <br>
 
