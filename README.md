@@ -28,6 +28,8 @@
 
 Role is used to automate installation and setup of [chezmoi](https://thekelleys.org.uk/dnsmasq/doc.html) on MacOS, Ubuntu and Debian systems. 
 
+If you **like/use** this role, please consider **starring** it. Thanks!
+
 <br>
 
 ### → Why should I use a dotfile manager?
@@ -51,31 +53,34 @@ When I dediced to develop a role for my dotfiles I did some research over existi
 ## 📑 Requirements
 
   - **Homebrew**: Requires `homebrew` already installed (you can use `geerlingguy.mac.homebrew` to install it on your Mac).
-  - **ansible.community.general** – installation handled by `Makefile` and it is defined in `requirements.yml`
 
 <br>
 
 ## 🔧 Role Variables
 
-Section shows all possible variants of adding, moving, replacing and removing of applications, spacers, folders. Available variables are listed below, along with example values (see `defaults/main.yml`):
+Available variables are listed below, along with example values (see `defaults/main.yml`):
 
 ### → Structure
 
-Structure of dictionary item for **adding** apps. All available options are listend below:
-
 ```yaml
 ---
-
-something:
-	here: goes
-
+dotfiles:
+  repository:
+  # From where should we take dotfiles?
+  # Example repository: https://github.com/benmezger/dotfiles
+  # By default, my personal is used.
+  url: https://github.com/lotyp/dotfiles.git
+  
+  # Which branch should we take for dotfiles?
+  branch: master
 ```
 
 <br>
 
 ## 📦 Dependencies
 
-  - (Soft dependency) `geerlingguy.homebrew`
+  - `geerlingguy.homebrew` (Soft dependency)
+  - `ansible.community.general` – installation handled by `Makefile` and it is defined in `requirements.yml`
 
 <br>
 
