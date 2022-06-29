@@ -3,5 +3,11 @@
 # https://ansible-lint.readthedocs.io/en/latest/configuring/
 
 skip_list:
-  - 'experimental'
-  - 'line-length'
+  - experimental
+  - line-length
+
+exclude_paths:
+  - ./contrib
+  - ./.venv
+
+...

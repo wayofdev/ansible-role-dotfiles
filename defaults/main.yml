@@ -7,3 +7,5 @@ dotfiles:
     # By default, my personal is used.
     url: https://github.com/lotyp/dotfiles.git
     branch: master
+
+...

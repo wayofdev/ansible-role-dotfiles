@@ -8,3 +8,5 @@
   ansible.builtin.command: "chezmoi init --apply --verbose --branch {{ dotfiles.repository.branch }} {{ dotfiles.repository.url }}"
   when: dotfiles.repository.url
   changed_when: false
+
+...
