@@ -1,11 +1,11 @@
 ---
 
-remote_regular_user: "{{ ansible_user_id }}"
+dotfiles_cm_repository: "https://github.com/twpayne/chezmoi"
 
-chezmoi_repository: "https://github.com/twpayne/chezmoi"
-
-chezmoi_deb_arch:
+dotfiles_cm_deb_arch:
   x86_64: amd64
   arm: arm
   arm64: arm64
   aarch64: arm64
+
+...

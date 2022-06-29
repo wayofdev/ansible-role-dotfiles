@@ -1,0 +1,11 @@
+---
+
+- name: Chezmoi | Install - macOS | Ensure chezmoi is installed on system
+  community.general.homebrew:
+    name: chezmoi
+    state: present
+    update_homebrew: true
+  tags:
+    - dotfiles-install
+
+...

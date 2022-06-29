@@ -2,23 +2,31 @@
 
 galaxy_info:
   role_name: dotfiles
-  author: lotyp
-  description: Installs chezmoi and your preferred dotfiles repository using Ansible role on MacOS or Linux.
+  author: wayofdev
+  description: Installs chezmoi and your preferred dotfiles repository using Ansible role on macOS or Linux
   company: wayofdev
 
-  license: MIT
+  license: GPL-3.0-only
 
-  min_ansible_version: 2.12
+  min_ansible_version: "2.13"
 
   platforms:
     - name: macOS
       versions:
-        - "Big-Sur"
+        - Monterey
+        - Big-Sur
 
   galaxy_tags:
-    - 'chezmoi'
-    - 'dotfiles'
-    - 'mac'
-    - 'osx'
+    - chezmoi
+    - dotfiles
+    - mac
+    - osx
+    - macos
 
 dependencies: []
+
+# Ensure that custom Ansible plugins and modules included in the main MacOps
+# collection are available to roles in other collections.
+collections: ["wayofdev.macops"]
+
+...

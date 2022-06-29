@@ -1,0 +1,17 @@
+---
+
+- name: Chezmoi | Install | Check if app is already installed
+  ansible.builtin.command: chezmoi --version
+  register: cm_version_output
+  ignore_errors: true
+  changed_when: false
+  tags:
+    - dotfiles-install
+
+- name: Chezmoi | Install | Should we?
+  ansible.builtin.set_fact:
+    cm_install: "{{ cm_version_output.rc > 0 }}"
+  tags:
+    - dotfiles-install
+
+...
