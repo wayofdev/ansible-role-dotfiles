@@ -25,9 +25,9 @@
 
 <br>
 
-# Ansible Role: Chezmoi for MacOS
+# Ansible Role: Chezmoi for macOS
 
-Role is used to automate installation and setup of [chezmoi](https://thekelleys.org.uk/dnsmasq/doc.html) on MacOS, Ubuntu and Debian systems.
+Role is used to automate installation and setup of [chezmoi](https://thekelleys.org.uk/dnsmasq/doc.html) on macOS, Ubuntu and Debian systems.
 
 If you **like/use** this role, please consider **starring** it. Thanks!
 
@@ -47,7 +47,7 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 
 ### → Why Chezmoi for dotfiles?
 
-When I dediced to develop a role for my dotfiles I did some research over existing dotfile managers. Chezmoi has a great comparsion table over other managers. Check this [comparsion table](https://www.chezmoi.io/comparison-table/).
+When I decided to develop a role for my dotfiles I did some research over existing dotfile managers. Chezmoi has a great comparison table over other managers. Check this [comparison table](https://www.chezmoi.io/comparison-table/).
 
 <br>
 
@@ -131,7 +131,7 @@ You can check `Makefile` to get full list of commands for remote and local testi
 
 ### → on localhost
 
-> :warning: **Notice**: By defaut all tests are ran against your local machine!
+> :warning: **Notice**: By defaut all tests are running against your local machine!
 
 ```bash
 # run molecule tests on localhost
@@ -170,7 +170,7 @@ $ make m-remote
 
 ## 📦 Dependencies
 
-Installation handled by `Makefile` and requirments are defined in `requirements.yml`
+Installation handled by `Makefile` and requirements are defined in `requirements.yml`
 
 ### → for all
 
