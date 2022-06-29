@@ -5,5 +5,7 @@
     name: chezmoi
     state: present
     update_homebrew: true
+  tags:
+    - dotfiles-install
 
 ...

@@ -1,0 +1,26 @@
+---
+
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+
+driver:
+  name: docker
+
+platforms:
+  - name: debian-based-instance
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2204}-ansible:latest"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+    privileged: true
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: "../_partials/playbooks/converge.yml"
+
+verifier:
+  name: ansible

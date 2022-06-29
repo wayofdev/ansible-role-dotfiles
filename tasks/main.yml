@@ -4,22 +4,18 @@
   ansible.builtin.include_tasks: install.yml
   tags:
     - dotfiles-install
-    - dotfiles-install-mac
-    - dotfiles-install-linux
 
 - name: Chezmoi | Include | Mac specific install tasks
   ansible.builtin.include_tasks: install-mac.yml
   when: chezmoi_install and ansible_system == "Darwin"
   tags:
     - dotfiles-install
-    - dotfiles-install-mac
 
 - name: Chezmoi | Include | Linux specific install tasks
   ansible.builtin.include_tasks: install-linux.yml
   when: chezmoi_install and ansible_system == "Linux"
   tags:
     - dotfiles-install
-    - dotfiles-install-linux
 
 - name: Chezmoi | Include | Dotfiles and Chezmoi configuration tasks
   ansible.builtin.include_tasks: configure.yml

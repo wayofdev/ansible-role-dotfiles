@@ -1,7 +1,5 @@
 ---
 
-remote_regular_user: "{{ ansible_user_id }}"
-
 chezmoi_repository: "https://github.com/twpayne/chezmoi"
 
 chezmoi_deb_arch:
