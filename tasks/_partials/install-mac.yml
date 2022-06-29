@@ -1,6 +1,6 @@
 ---
 
-- name: Chezmoi | Install for macOS using brew
+- name: Chezmoi | Install - macOS | Ensure chezmoi is installed on system
   community.general.homebrew:
     name: chezmoi
     state: present

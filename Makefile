@@ -23,7 +23,7 @@ ANSIBLE_LATER_BIN = ansible-later
 # -v - verbose;
 # -vv - more details
 # -vvv - enable connection debugging
-DEBUG_VERBOSITY ?= -vvv
+DEBUG_VERBOSITY ?= -v
 
 ### Lint yaml files
 lint: later
@@ -33,27 +33,28 @@ lint: later
 
 ### Run tests
 m-local:
-	$(POETRY_RUNNER) molecule test --scenario-name default-macos-on-localhost -- $(DEBUG_VERBOSITY) --tags $(TASK_TAGS)
+	$(POETRY_RUNNER) molecule test -s default-macos-on-localhost -- $(DEBUG_VERBOSITY) --tags $(TASK_TAGS)
 .PHONY: m-local
 
 m-remote:
-	$(POETRY_RUNNER) molecule test --scenario-name default-macos-over-ssh -- $(DEBUG_VERBOSITY) --tags $(TASK_TAGS)
+	$(POETRY_RUNNER) molecule test -s default-macos-over-ssh -- $(DEBUG_VERBOSITY) --tags $(TASK_TAGS)
 .PHONY: m-remote
 
 m-linux:
-	$(POETRY_RUNNER) run molecule test --scenario-name default -- $(DEBUG_VERBOSITY) --tags $(TASK_TAGS)
+	$(POETRY_RUNNER) molecule test -s default -- $(DEBUG_VERBOSITY)
 .PHONY: m-linux
 
 login-mac:
 	$(POETRY_RUNNER) molecule login \
 		--host macos-12-vm \
-		--scenario-name default-macos-over-ssh
+		-s default-macos-over-ssh
 .PHONY: login-mac
 
 login-deb:
+	$(POETRY_RUNNER) molecule create -s default
 	$(POETRY_RUNNER) molecule login \
 		--host debian-based-instance \
-		--scenario-name default
+		-s default
 .PHONY: login-deb
 
 debug-version:

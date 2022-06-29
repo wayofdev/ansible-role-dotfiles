@@ -1,0 +1,41 @@
+---
+
+- name: Chezmoi | Install - Linux | Get latest release tag
+  block:
+    - name: Chezmoi | Install - Linux | Get releases
+      delegate_to: localhost
+      ansible.builtin.uri:
+        url: "https://api.github.com/repos/twpayne/chezmoi/releases?per_page=6"
+        body_format: json
+        headers:
+          Authorization: "{{ ((lookup('env', 'GITHUB_TOKEN') | length > 0) | ternary('Bearer ' + lookup('env', 'GITHUB_TOKEN'), null)) | default(omit) }}"
+      register: cm_releases
+      until: cm_releases is not failed
+      retries: 9
+      tags:
+        - dotfiles-install
+
+    - name: Chezmoi | Install - Linux | Get latest release from json array
+      ansible.builtin.set_fact:
+        cm_latest_release: "{{ cm_releases.json
+          | json_query('[?prerelease==`false` && draft==`false`].tag_name')
+          | community.general.version_sort
+          | last | regex_replace('^v?(.*)$', '\\1') }}"
+      tags:
+        - dotfiles-install
+  when:
+    - cm_latest_release is not defined
+  run_once: true
+  tags:
+    - dotfiles-install
+
+- name: Chezmoi | Install - Linux | Ensure binary is present on system (Debian Family)
+  ansible.builtin.apt:
+    deb: "{{ dotfiles_cm_repository }}/releases/download/v{{ cm_latest_release }}/chezmoi_{{ cm_latest_release }}_linux_{{ dotfiles_cm_deb_arch[ansible_architecture] }}.deb"
+  become: true
+  become_user: root
+  when: ansible_os_family == "Debian"
+  tags:
+    - dotfiles-install
+
+...
