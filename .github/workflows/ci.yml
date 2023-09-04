@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup python
         uses: actions/setup-python@v4
@@ -60,12 +60,12 @@ jobs:
 
     steps:
       - name: Check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
       - name: Check out the actions/cache source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: actions/cache
           ref: v3
@@ -114,12 +114,12 @@ jobs:
 
     steps:
       - name: Check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
       - name: Check out the actions/cache source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: actions/cache
           ref: v3
